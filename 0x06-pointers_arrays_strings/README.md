@@ -1,6 +1,6 @@
-#More pointers, arrays and strings.
+0x06. C - More pointers, arrays and strings
 
-#TASKS
+TASKS:
 
 0. strcat
 
@@ -30,13 +30,15 @@ Prototype: char *_strncpy(char *dest, char *src, int n);
 Your function should work exactly like strncpy
 FYI: The standard library provides a similar function: strncpy. Run man strncpy to learn more.
 
+
+
 3. strcmp
 
 Write a function that compares two strings.
 
 Prototype: int _strcmp(char *s1, char *s2);
 Your function should work exactly like strcmp
-FYI: The standard library provides a similar function: strcmp. Run man strcmp to learn more.
+FYI: The standard library provides a similar function: strcmp. Run man strcmp to learn more
 
 4. I am a kind of paranoid in reverse. I suspect people of plotting to make me happy
 
@@ -44,7 +46,6 @@ Write a function that reverses the content of an array of integers.
 
 Prototype: void reverse_array(int *a, int n);
 Where n is the number of elements of the array
-
 
 5. Always look up
 
@@ -101,10 +102,11 @@ Add one line to this code, so that the program prints a[2] = 98, followed by a n
 You are not allowed to use the variable a in your new line of code
 You are not allowed to modify the variable p
 You can only write one statement
-You are not allowed to use,
+You are not allowed to use ,
 You are not allowed to code anything else than the line of expected line of code at the expected line
 Your code should be written at line 19, before the ;
-Do not remove anything from the initial code (not even the comments and don’t change anything but the line of code you are adding (don’t change the spaces to tabs!)
+Do not remove anything from the initial code (not even the comments)
+and don’t change anything but the line of code you are adding (don’t change the spaces to tabs!)
 You are allowed to use the standard library
 
 11. It is the addition of strangeness to beauty that constitutes the romantic character in art
@@ -134,4 +136,6 @@ Each line shows the content of the buffer. If the byte is a printable character,
 Each line ends with a new line \n
 If size is 0 or less, the output should be a new line only \n
 You are allowed to use the standard library
-The output should look like the following example, and formatted exactly the same way
+The output should look like the following example, and formatted exactly the same way:
+
+EOF

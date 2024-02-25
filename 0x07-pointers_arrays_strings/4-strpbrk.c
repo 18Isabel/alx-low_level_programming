@@ -1,23 +1,23 @@
 #include "main.h"
-
 /**
-  *_strpbrk - Entry point
-  *@s: input
-  *@accept: input
-  *Return: Always 0 (success)
-  */
+ * _strpbrk - Entry point
+ * @s: input
+ * @accept: input
+ * Return: Always 0 (Success)
+ */
 char *_strpbrk(char *s, char *accept)
 {
-	int a;
+	int k;
 
 	while (*s)
 	{
-		for (a = 0; accept[a]; a++)
+		for (k = 0; accept[k]; k++)
 		{
-			if (*s == accept[a])
-				return (s);
+		if (*s == accept[k])
+		return (s);
 		}
-		s++;
+	s++;
 	}
-	return ('\0');
+
+return ('\0');
 }
