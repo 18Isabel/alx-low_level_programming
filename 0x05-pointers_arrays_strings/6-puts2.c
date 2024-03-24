@@ -1,21 +1,18 @@
 #include "main.h"
-
 /**
-  * puts2 - print few character of a string
-  * @str: parameter
-  */
-
+ * puts2 - print character of string
+ * @str: string variable
+ * Return: 0
+ */
 void puts2(char *str)
 {
-	int i;
+	int i = 0;
 
-	for (i = 0; *str != '\0'; i++)
+	while (*(str + i) != '\0')
 	{
-		if ((i % 2) == 0)
-		{
-			_putchar(*str);
-		}
-		str++;
+		if (i % 2 == 0)
+			_putchar(*(str + i));
+		i++;
 	}
 	_putchar('\n');
 }

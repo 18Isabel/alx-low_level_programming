@@ -1,21 +1,17 @@
 #include <stdio.h>
-
 /**
-  * main - Entry point
-  *
-  * Return: Always 0 (Succes)
-  */
-
+ * main - prints lowercase alphabet in reverse,
+ * followed by a new line
+ * Return: Always 0 (Success)
+ */
 int main(void)
 {
-	char rev = 'z';
+	char ch;
 
-	while (rev >= 'a')
+	for (ch = 'z'; ch >= 'a'; ch--)
 	{
-		putchar(rev);
-		rev--;
+		putchar(ch);
 	}
 	putchar('\n');
-
 	return (0);
 }

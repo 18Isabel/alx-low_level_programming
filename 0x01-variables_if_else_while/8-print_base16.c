@@ -1,28 +1,21 @@
-#include <stdio.h>
-
+#include<stdio.h>
 /**
-  * main - Entry point
-  *
-  * Return: Always 0 (Success)
-  */
-
+ * main - Prints numbers 0 to 9 and letters a to f
+ *
+ * Return: Always 0 (Success)
+ */
 int main(void)
 {
-	int m = 0;
-	char n = 'a';
+	int i;
 
-	while (m < 10)
+	for (i = 48; i < 58; i++)
 	{
-		putchar(m + '0');
-		m++;
+		putchar(i);
 	}
-	while (n <= 'f')
+	for (i = 97; i < 103; i++)
 	{
-		putchar(n);
-		n++;
+		putchar(i);
 	}
 	putchar('\n');
-
 	return (0);
-
 }

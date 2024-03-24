@@ -1,4 +1,1 @@
-## **C - Search Algorithms**
-**`C`** **`Algorithm`**
-
-#### **`Author: Adam Sanusi Babatunde`**
+sol to serch algorthm

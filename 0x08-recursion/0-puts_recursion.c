@@ -1,19 +1,17 @@
 #include "main.h"
-
 /**
-  * _puts_recursion - prints strings to standard output
-  * @c: pointer to character
-  */
-
-void _puts_recursion(char *c)
+ * _puts_recursion - prints a string
+ * @s: spring source
+ */
+void _puts_recursion(char *s)
 {
-	if (*c)
+	if (*s != '\0')
 	{
-		_putchar(*c);
-		_puts_recursion(c + 1);
+		_putchar(*s);
+		_puts_recursion(s + 1);
 	}
 	else
 	{
-		_putchar('\n');
+	_putchar('\n');
 	}
 }

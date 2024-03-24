@@ -1,37 +1,40 @@
 #include <stdio.h>
 #include <stdlib.h>
 /**
- * main - main - entry
- * @argc: argument count
- * @argv: argument vector
- * Return: returns opcode of main function
-*/
+ * main - prints opcodes
+ * @argc: number of arguments
+ * @argv: array
+ * Return: Always 0
+ */
 int main(int argc, char *argv[])
 {
-	int i, byte;
-	char *ptr;
+	int b, i;
+	char *arr;
 
 	if (argc != 2)
 	{
-		puts("Error");
+		printf("Error\n");
 		exit(1);
 	}
-	byte = atoi(argv[1]);
-	if (byte < 0)
+
+	b = atoi(argv[1]);
+
+	if (b < 0)
 	{
-		puts("Error");
+		printf("Error\n");
 		exit(2);
 	}
-	ptr = (char *)main;
 
-	for (i = 0; i < byte; i++)
+	arr = (char *)main;
+
+	for (i = 0; i < b; i++)
 	{
-		if (i == byte - 1)
+		if (i == b - 1)
 		{
-			printf("%02hhx\n", ptr[i]);
+			printf("%02hhx\n", arr[i]);
 			break;
 		}
-		printf("%02hhx ", ptr[i]);
+		printf("%02hhx ", arr[i]);
 	}
 	return (0);
 }

@@ -1,27 +1,20 @@
 #include "main.h"
 #include <stdio.h>
 /**
- * print_diagsums - Entry point
- * @a: input
- * @size: input
- * Return: Always 0 (Success)
+ * print_diagsums - prints diagsums
+ * @a: array
+ * @size: size
+ * Return: 0
  */
 void print_diagsums(int *a, int size)
 {
-	int sum1, sum2, y;
+	int j, len1 = 0, len2 = 0;
 
-	sum1 = 0;
-	sum2 = 0;
-
-	for (y = 0; y < size; y++)
+	for (j = 0; j < size; j++)
 	{
-		sum1 = sum1 + a[y * size + y];
+		len1 += *(a + (size * j + j));
+		len2 += *(a + (size * j + size - 1 - j));
 	}
-
-	for (y = size - 1; y >= 0; y--)
-	{
-		sum2 += a[y * size + (size - y - 1)];
-	}
-
-	printf("%d, %d\n", sum1, sum2);
+	printf("%d, ", len1);
+	printf("%d\n", len2);
 }

@@ -1,37 +1,42 @@
 #include "3-calc.h"
 /**
- * main - main entry
- * @argc: argument count
- * @argv: arguments
- * Return: return 0 if success
-*/
+ * main - program to peeform operation
+ * @argc: array
+ * @argv: array of arguments
+ * Return: Always 0
+ */
 int main(int argc, char *argv[])
 {
-	int num1, num2;
-	char *op;
+	int arg1, arg2, result;
+	char o;
 	int (*func)(int, int);
-	int result;
 
 	if (argc != 4)
 	{
-		puts("Error");
+		printf("Error\n");
 		exit(98);
 	}
-	num1 = atoi(argv[1]);
-	num2 = atoi(argv[3]);
-	op = argv[2];
-	if (get_op_func(op) == NULL)
+
+	arg1 = atoi(argv[1]);
+	arg2 = atoi(argv[3]);
+
+	func = get_op_func(argv[2]);
+
+	if (!func)
 	{
-		puts("Error");
+		printf("Error\n");
 		exit(99);
 	}
-	if ((num2 == 0 && *op == '/') || (num2 == 0 && *op == '%'))
+
+	o = *argv[2];
+
+	if ((o == '/' || o == '%') && arg2 == 0)
 	{
-		puts("Error");
+		printf("Error\n");
 		exit(100);
 	}
-	func = get_op_func(op);
-	result = func(num1, num2);
+
+	result = func(arg1, arg2);
 
 	printf("%d\n", result);
 

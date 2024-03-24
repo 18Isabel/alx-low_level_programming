@@ -1,17 +1,20 @@
 #include "main.h"
 /**
- * clear_bit - function that sets the value of a bit to 0 at a given index
- * @n: pointer to number
- * @index: index position
- * Return: 1 if it worked, or -1 if an error occurred
-*/
+ * clear_bit - sets value of bit
+ * @n: pointer
+ * @index: bit index
+ * Return: 1 else, -1
+ */
 int clear_bit(unsigned long int *n, unsigned int index)
 {
-	unsigned long int bit = 0x01;
+	unsigned int j;
 
-	bit = ~(bit << index);
-	if (bit == 0x00)
+	if (index > 63)
 		return (-1);
-	*n &= bit;
+
+	j = 1 << index;
+
+	if (*n & j)
+		*n ^= j;
 	return (1);
 }

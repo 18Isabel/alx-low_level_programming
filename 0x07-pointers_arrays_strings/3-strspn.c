@@ -1,28 +1,27 @@
-#include "main.h"
 /**
- * _strspn - Entry point
- * @s: input
- * @accept: input
- * Return: Always 0 (Success)
- */
+* _strspn - prefix substring lenght
+* @s: String for subtraction
+* @accept: Substring to match
+* Return: integer
+*/
+
 unsigned int _strspn(char *s, char *accept)
 {
-	unsigned int n = 0;
-	int r;
+	unsigned int d = 0;
 
-	while (*s)
+	char *j = accept;
+
+	while (*s++)
 	{
-		for (r = 0; accept[r]; r++)
-		{
-			if (*s == accept[r])
+		while (*accept++)
+			if (*(s - 1) == *(accept - 1))
 			{
-				n++;
+				d++;
 				break;
 			}
-			else if (accept[r + 1] == '\0')
-				return (n);
-		}
-		s++;
+		if (!(*--accept))
+			break;
+		accept = j;
 	}
-	return (n);
+	return (d);
 }

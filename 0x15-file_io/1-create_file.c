@@ -1,28 +1,29 @@
 #include "main.h"
 /**
- * create_file - function that creates a file
- * @filename: filename
- * @text_content: NULL terminated string to write to the file
- * Return: return 1 on success else -1
+ * create_file - creates file
+ * @filename: name of file
+ * @text_content: fie content
+ * Return: 1, else -1
  */
 int create_file(const char *filename, char *text_content)
 {
-	int fd, len = 0;
-	ssize_t bytes;
+	int fl, letn, wr;
 
-	if (filename == NULL)
+	if (!filename)
 		return (-1);
+	fl = open(filename, O_CREAT | O_WRONLY | O_TRUNC, 0600);
 
-	fd = open(filename, O_RDWR | O_CREAT | O_TRUNC, 0600);
-	if (fd == -1)
+	if (fl == -1)
 		return (-1);
+	if (!text_content)
+		text_content = "";
+	for (letn = 0; text_content[letn]; letn++)
+		;
 
-	while (text_content && *(text_content + len))
-		len++;
+	wr = write(fl, text_content, letn);
 
-	bytes = write(fd, text_content, len);
-	close(fd);
-	if (bytes == -1)
+	if (wr == -1)
 		return (-1);
+	close(fl);
 	return (1);
 }

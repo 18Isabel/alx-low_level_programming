@@ -1,24 +1,28 @@
+#include "main.h"
 #include <stdio.h>
 
 /**
- * main - print fizzbuzz
+ * main - "Entry point"
  * Return: Always 0
  */
 int main(void)
 {
-	int n;
+	int num;
 
-	printf("1");
-	for (n = 2; n <= 100; n++)
+	for (num = 1; num <= 100; ++num)
 	{
-		printf(" ");
-		if (n % 3 == 0)
+		if (num % 3 == 0 && !(num % 5 == 0))
 			printf("Fizz");
-		if (n % 5 == 0)
+		else if (num % 5 == 0 && !(num % 3 == 0))
 			printf("Buzz");
-		if (n % 3 != 0 && n % 5 != 0)
-			printf("%d", n);
+		else if (num % 3 == 0 && num % 5 == 0)
+			printf("FizzBuzz");
+		else
+			printf("%d", num);
+		if (num != 100)
+			printf(" ");
+		else
+			printf("\n");
 	}
-	printf("\n");
 	return (0);
 }

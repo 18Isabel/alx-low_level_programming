@@ -1,14 +1,21 @@
 #include "hash_tables.h"
+
 /**
- * key_index - function that gives you the index of a key
- * @key: key
- * @size: size of the array of the hash table
- * Description: Hashing by division
- * The scheme in hashing by division is as follows:
- * index = hash_digest(hash_djb2(key)) mod m(size of the table)
- * Return: index
+ * key_index - Gives you the index of a key.
+ *
+ * @key: Pointer to the key (unsigned char *).
+ *
+ * @size: Size of the hash table.
+ *
+ * Return: The index of the key in the hash table.
  */
+
 unsigned long int key_index(const unsigned char *key, unsigned long int size)
 {
-	return (hash_djb2(key) % size);
+	unsigned long int index = 0;
+
+	index = hash_djb2(key);
+	index %= size;
+
+	return (index);
 }

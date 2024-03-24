@@ -1,2 +1,1 @@
-### C - Makefiles
-**`C`**
+solutions to;makefiles

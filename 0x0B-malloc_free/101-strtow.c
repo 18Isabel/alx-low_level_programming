@@ -1,98 +1,64 @@
-#include <stdio.h>
+#include "main.h"
 #include <stdlib.h>
-#include <string.h>
 /**
- * finalptr - initializes data from a 1-di_array to 2-di_array
- * @str: one dimensional pointer data to copy
- * @ptr: two dimensional pointer
- * Return: return two dimensional array of data
-*/
-char **finalptr(char *str, char **ptr)
+ * ch_free_grid - array
+ * @grid: array of char
+ * @height: height
+ * Return: void
+ */
+void ch_free_grid(char **grid, unsigned int height)
 {
-	int i = 0, j = 0, k = 0;
-
-	while (str[i])
+	if (grid != NULL && height != 0)
 	{
-		if (str[i] != ' ')
-		{
-			ptr[j][k] = str[i];
-			k++;
-			if (str[i + 1] == ' ' || str[i + 1] == '\0')
-			{
-				ptr[j][k] = '\0';
-				j++;
-				k = 0;
-			}
-		}
-		i++;
+		for (; height > 0; height--)
+			free(grid[height]);
+		free(grid[height]);
+		free(grid);
 	}
-	return (ptr);
 }
-/**
- * wordcount - counts the amount of non spaced words in a string
- * @str: strings to go through
- * Return: number of non spaced words
-*/
-int wordcount(char *str)
-{
-	int i;
-	int count = 0;
 
-	i = 0;
-	while (str[i])
-	{
-		if ((str[i] != ' ') && (str[i + 1] == ' ' || str[i + 1] == '\0'))
-		{
-			count++;
-		}
-		i++;
-	}
-	return (count);
-}
 /**
- * strtow - splits a string into words
+ * strtow - string
  * @str: string
- * Return: returns a pointer to an array of strings (words)
-*/
+ * Return: pointer array
+ */
 char **strtow(char *str)
 {
-	int i, len;
-	int a = 0, count = 0;
-	char **ptr, **final;
+	char **guot;
+	unsigned int c, height, i, k, a1;
 
-	if (str == NULL)
+	if (str == NULL || *str == '\0')
 		return (NULL);
-	len = wordcount(str);
-	if (len == 0)
-		return (NULL);
-	ptr = malloc(sizeof(char *) * (len + 1));
-	if (ptr == NULL)
-		return (NULL);
-
-	i = 0;
-	while (str[i])
+	for (c = height = 0; str[c] != '\0'; c++)
+		if (str[c] != ' ' && (str[c + 1] == ' ' || str[c + 1] == '\0'))
+			height++;
+	guot = malloc((height + 1) * sizeof(char *));
+	if (guot == NULL || height == 0)
 	{
-		if (str[i] != ' ')
+		free(guot);
+		return (NULL);
+	}
+	for (i = a1 = 0; i < height; i++)
+	{
+		for (c = a1; str[c] != '\0'; c++)
 		{
-			count++;
-			if (str[i + 1] == ' ' || str[i + 1] == '\0')
+			if (str[c] == ' ')
+				a1++;
+			if (str[c] != ' ' && (str[c + 1] == ' ' || str[c + 1] == '\0'))
 			{
-				ptr[a] = malloc(sizeof(char) * (count + 1));
-				if (ptr[a] == NULL)
+				guot[i] = malloc((c - a1 + 2) * sizeof(char));
+				if (guot[i] == NULL)
 				{
-					for (a = a - 1; a >= 0; a--)
-					{
-						free(ptr[a]);
-					}
-					free(ptr);
+					ch_free_grid(guot, i);
 					return (NULL);
 				}
-				a++;
-				count = 0;
+				break;
 			}
 		}
-		i++;
+		for (k = 0; a1 <= c; a1++, k++)
+			guot[i][k] = str[a1];
+		guot[i][k] = '\0';
 	}
-	final = finalptr(str, ptr);
-	return (final);
+	guot[i] = NULL;
+	return (guot);
 }

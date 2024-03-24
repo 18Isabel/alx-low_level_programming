@@ -1,18 +1,13 @@
-extern printf
-
-section .data
-msg: db "Hello, Holberton", 0
-fmt: db "%s", 10, 0
-
-section .text
-
-global main
+EXTERN printf
+SECTION .data
+msg:	db "Hello, Holberton", 0
+fmt:	db "%s", 10, 0
+	SECTION .text
+	global main
 main:
-	push	rbp
-	mov	rdi,fmt
-	mov	rsi,msg
-	mov	rax,0
-	call	printf
-	pop	rbp
-	mov	rax,0
+	mov esi, msg ; fixes address
+	mov edi, fmt ; load edi wf strg
+	mov eax, 0
+	call printf
+	mov eax, 0 ; formats eax
 	ret

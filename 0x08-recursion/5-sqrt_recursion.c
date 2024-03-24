@@ -1,31 +1,27 @@
 #include "main.h"
 /**
-  * mul - check for multiples of a
-  * @a: variable holding n from sqrt
-  * @b: numbers as test for mutiple
-  * Return: multiple of a
-  */
-int mul(int a, int b)
-{
-	if (b * b == a)
-	{
-		return (b);
-	}
-	else if (b == a / 2 || a < 0)
-	{
-		return (-1);
-	}
-	return (mul(a, b + 1) * 1);
-}
-/**
-  * _sqrt_recursion - function that rerutns natural square root of a number.
-  * @n: a number
-  * Return: return the square root
-  */
+ * _sqrt_recursion - return square root
+ * @n: integer
+ * Return: integer
+ */
 int _sqrt_recursion(int n)
 {
-	int res;
+	return (_sqrt(n, 1));
+}
 
-	res = mul(n, 1);
-	return (res);
+/**
+ * _sqrt - heck wether or not it is a natural square root
+ * @n: integer
+ * @j: integer
+ * Return: integer
+ */
+int _sqrt(int n, int j)
+{
+	if (n < 0)
+		return (-1);
+	if ((j * j) > n)
+		return (-1);
+	if (j * j == n)
+		return (j);
+	return (_sqrt(n, j + 1));
 }

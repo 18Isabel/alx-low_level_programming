@@ -1,18 +1,23 @@
+#include <stdlib.h>
 #include "dog.h"
 /**
- * init_dog - function that initialize a variable of type struct dog
- * @d: pointer to struct data from outside the function
- * @name: first pointer variable to string
- * @age: second variable to a float number
- * @owner: third pointer variable to string
-*/
+ * init_dog - struct dog variable
+ *@d: array
+ *@name: name
+ *@age: age
+ *@owner: owner
+ * Description: struct for dog
+ */
 void init_dog(struct dog *d, char *name, float age, char *owner)
 {
 	if (d == NULL)
-	{
 		return;
+
+	else
+	{
+		d->name = name;
+		d->age = age;
+		d->owner = owner;
 	}
-	d->name = name;
-	d->age = age;
-	d->owner = owner;
+
 }

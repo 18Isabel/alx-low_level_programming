@@ -1,51 +1,50 @@
 #include "main.h"
+#include <stdlib.h>
 /**
- * _strlen - lenght of a string
- * @str: function argument
- * Return: the lenght of the string
-*/
-int _strlen(char *str)
-{
-	if (!(*str))
-	{
-		return (0);
-	}
-	return (_strlen(str + 1) + 1);
-}
-/**
- * argstostr - concatenates all the arguments of your program
- * @ac: argument count
- * @av: array of argument strings
- * Return: pointer to concatenated strings with newlines
-*/
+ * argstostr - concatenates functions
+ * @ac: array 1
+ * @av: array 2
+ * Return: to pointer
+ */
 char *argstostr(int ac, char **av)
 {
-	char *ptr;
-	int i;
-	int len = 0, j = 0, n = 0;
+	char *stl;
+	int c, i, k, ia;
 
-	if (ac == 0 || av == NULL)
+	if (ac == 0)
+		return (NULL);
+
+	for (c = i = 0; i < ac; i++)
 	{
+		if (av[i] == NULL)
+			return (NULL);
+
+		for (k = 0; av[i][k] != '\0'; k++)
+			c++;
+		c++;
+	}
+
+	stl = malloc((c + 1) * sizeof(char));
+
+	if (stl == NULL)
+	{
+		free(stl);
 		return (NULL);
 	}
-	for (i = 0; i < ac; i++)
+
+	for (i = k = ia = 0; ia < c; k++, ia++)
 	{
-		len += _strlen(av[i]) + 1;
-	}
-	ptr = malloc(sizeof(char) * len + 1);
-	if (ptr == NULL)
-	{
-		return (NULL);
-	}
-	for (i = 0; i < ac; i++)
-	{
-		for (j = 0; j < _strlen(av[i]); j++)
+		if (av[i][k] == '\0')
 		{
-			ptr[n] = av[i][j];
-			n++;
+			stl[ia] = '\n';
+			i++;
+			ia++;
+			k = 0;
 		}
-		ptr[n] = '\n';
-		n++;
+		if (ia < c - 1)
+			stl[ia] = av[i][k];
 	}
-	return (ptr);
+	stl[ia] = '\0';
+
+	return (stl);
 }

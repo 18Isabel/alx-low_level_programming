@@ -1,33 +1,63 @@
+#include <stdlib.h>
 #include "dog.h"
 /**
- * new_dog - creates a new dog
- * @name: name of dog
- * @age: age of dog
- * @owner: dog's owner
- * Return: returns the values of new_dog as a pointer
-*/
+ ** _strdup - returns pointer memory
+ ** @str: string to copy
+ ** Return: to pointer
+ **/
+char *_strdup(char *str)
+{
+	char *ar;
+	unsigned int i = 0;
+	unsigned int k = 0;
+
+	if (str == NULL)
+		return (NULL);
+	while (str[i])
+		i++;
+	ar = malloc(sizeof(char) * (i + 1));
+	if (ar == NULL)
+		return (NULL);
+	while (str[k])
+	{
+		ar[k] = str[k];
+		k++;
+	}
+	ar[k] = 0;
+	return (ar);
+}
+/**
+ ** new_dog - createsnew dog
+ ** @name: dog name
+ ** @age: the age of dog
+ ** @owner: dog owner
+ ** Return: NULL
+ **/
 dog_t *new_dog(char *name, float age, char *owner)
 {
-	dog_t *new_dog;
+	dog_t *new;
+	char *ncpy;
+	char *ocpy;
 
-	new_dog = malloc(sizeof(dog_t));
-	if (new_dog == NULL)
+	new = malloc(sizeof(dog_t));
+
+	if (new == NULL)
+		return (NULL);
+	ncpy = _strdup(name);
+	if (!ncpy && name)
 	{
+		free(new);
 		return (NULL);
 	}
-	new_dog->name = malloc(strlen(name) + 1);
-	new_dog->owner = malloc(strlen(owner) + 1);
-	if (new_dog->name == NULL || new_dog->owner == NULL)
+	ocpy = _strdup(owner);
+	if (!ocpy && owner)
 	{
-		free(new_dog->name);
-		free(new_dog->owner);
-		free(new_dog);
+		free(ncpy);
+		free(new);
 		return (NULL);
 	}
-
-	strcpy(new_dog->name, name);
-	strcpy(new_dog->owner, owner);
-	new_dog->age = age;
-
-	return (new_dog);
+	new->name = ncpy;
+	new->age = age;
+	new->owner = ocpy;
+	return (new);
 }

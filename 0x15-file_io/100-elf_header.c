@@ -1,13 +1,23 @@
-#include "main.h"
-
+#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <elf.h>
+#include <sys/types.h>
+void print_abi(unsigned char *e_ident);
+void print_osabi(unsigned char *e_ident);
+void print_type(unsigned int e_type, unsigned char *e_ident);
+void print_entry(unsigned long int e_entry, unsigned char *e_ident);
+void close_elf(int elf);
+void check_elf(unsigned char *e_ident);
+void print_magic(unsigned char *e_ident);
+void print_class(unsigned char *e_ident);
+void print_data(unsigned char *e_ident);
+void print_version(unsigned char *e_ident);
 /**
- * main - The entry point for program to get header of ELF file
- * @ac: The number of arguments
- * @av: The pointer to array of arguments
- * Return: 1 on success, error code on failure
+ * check_elf - checks for ELF file
+ * @e_ident: pointer
+ * Description: check for ELF file
  */
-int main(int ac, char *av[])
-{
-	printf("argc:%d, argv:%p\n", ac, (void *)*av);
-	return (1);
-}
+
